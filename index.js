@@ -11,3 +11,5 @@ let deckId = null;
 }
 
 document.getElementById("new-deck").addEventListener("click", handleClick)
+
+// Path: index.html
