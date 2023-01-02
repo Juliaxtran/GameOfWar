@@ -1,6 +1,5 @@
 let deckId
-let cardOne = document.getElementById("card-one")
-let cardTwo = document.getElementById("card-two")
+
 
 const handleClick = () => {
   fetch("https://apis.scrimba.com/deckofcards/api/deck/new/shuffle/")
@@ -13,12 +12,15 @@ const handleClick = () => {
 
 document.getElementById("new-deck").addEventListener("click", handleClick)
 
+// Draw Two Cards
 document.getElementById("draw-cards").addEventListener("click", () => {
   fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
       .then(res => res.json())
       .then(data => {
-        cardOne.innerHTML = `<img src="${data.cards[0].image}">`
-        cardTwo.innerHTML = `<img src="${data.cards[1].image}">`
+        document.getElementById("cards").innerHTML = `
+          <img src="${data.cards[0].image}" />
+          <img src="${data.cards[1].image}" />
+        `
       })
 })
 
