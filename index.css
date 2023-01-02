@@ -1,4 +1,48 @@
 html, body {
   margin: 0;
   padding: 0;
+  background-color: #006e11;
+  background-image: url("bg.png");
+  font-family: 'Quantico', sans-serif;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between
+}
+
+button {
+  background-color: #e8c547;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 1em;
+  font-weight: 900;
+}
+
+button.deck {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin: 1em;
+}
+
+@media only screen and (max-width: 768px) {
+  button.deck {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+button.draw {
+  font-size: 1.2em;
+}
+
+button:hover {
+  background-color: #f9b500;
+}
+
+
+
