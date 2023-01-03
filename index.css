@@ -9,6 +9,7 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
+  align-items: center;
   height: 100vh;
   justify-content: space-between
 }
@@ -27,6 +28,7 @@ button.deck {
   width: 100px;
   height: 100px;
   margin: 1em;
+  align-self: flex-start;
 }
 
 @media only screen and (max-width: 768px) {
@@ -38,11 +40,20 @@ button.deck {
 
 button.draw {
   font-size: 1.2em;
+  width: 100%;
 }
 
 button:hover {
   background-color: #f9b500;
 }
 
+div.card-slot {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 150px;
+  width : calc(120px * 5 / 7);
+}
 
-
+div.card-slot:nth-of-type(1) {
+  margin-bottom: 50px;
+}
