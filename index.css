@@ -32,12 +32,6 @@ button.deck {
 
 }
 
-@media only screen and (max-width: 768px) {
-  button.deck {
-    width: 75px;
-    height: 75px;
-  }
-}
 
 button.draw {
   font-size: 1.2em;
@@ -78,4 +72,16 @@ img.card {
 
 .deck-remaining:hover{
   scale: 1.1;
+}
+
+@media only screen and (max-width: 768px) {
+  button.deck {
+    width: 75px;
+    height: 75px;
+  }
+  div.card-slot {
+    height: 100px;
+    width : calc(100px * 5 / 7);
+    margin-bottom: 1em;
+  }
 }
