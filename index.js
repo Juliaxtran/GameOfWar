@@ -5,6 +5,8 @@ const drawCardBtn = document.getElementById("draw-cards")
 const header = document.getElementById("header")
 const remainingPlaceholder = document.getElementById("remaining")
 const alert = document.getElementsByClassName("alert");
+const computerScore = document.getElementById("computer-score");
+const playerScore = document.getElementById("player-score");
 
 // Functions
 
@@ -15,6 +17,9 @@ function handleClick() {
       deckId = data.deck_id
       remainingPlaceholder.innerText = "52";
       drawCardBtn.disabled = false;
+      header.innerText = 'Game of War'
+      computerScore.innerText = 0;
+      playerScore.innerText = 0;
 
     })
 }
@@ -40,8 +45,10 @@ const determineCardWinner = (card1, card2) => {
   const card2Value = cardValues.indexOf(card2)
 
   if (card1Value > card2Value) {
+    computerScore.innerText = parseInt(computerScore.innerText) + 1;
     return "Card 1 wins!"
   } else if (card1Value < card2Value) {
+    playerScore.innerText = parseInt(playerScore.innerText) + 1;
     return "Card 2 wins!"
   } else {
     return "War"
@@ -81,6 +88,12 @@ drawCardBtn.addEventListener("click", () => {
 
       // Disable draw button if no cards left
       if (remaining === 0) {
+        if (parseInt(playerScore.innerText) > parseInt(computerScore.innerText)) {
+          header.innerText = "Congrat! You win!";
+        }
+        else if (parseInt(playerScore.innerText) < parseInt(computerScore.innerText)) {
+          header.innerText = " Sorry! You lose!";
+        }
         drawCardBtn.disabled = true
         alert[0].style.display = "block"
         setTimeout(() => {
