@@ -2,6 +2,8 @@ let deckId
 const cardsContainer = document.getElementById("cards")
 const newDeckBtn = document.getElementById("new-deck")
 const drawCardBtn = document.getElementById("draw-cards")
+const header = document.getElementById("header")
+const remainingPlaceholder = document.getElementById("remaining")
 
 // Functions
 
@@ -10,10 +12,10 @@ function handleClick() {
     .then(res => res.json())
     .then(data => {
       deckId = data.deck_id
+      remainingPlaceholder.innerText =  "52";
     })
 }
 
-newDeckBtn.addEventListener("click", handleClick)
 
 const determineCardWinner = (card1, card2) => {
   const cardValues = [
@@ -35,15 +37,17 @@ const determineCardWinner = (card1, card2) => {
   const card2Value = cardValues.indexOf(card2)
 
   if (card1Value > card2Value) {
-    console.log("Card 1 wins!")
+    return "Card 1 wins!"
   } else if (card1Value < card2Value) {
-    console.log("Card 2 wins!")
+    return "Card 2 wins!"
   } else {
-    console.log("It's a tie!")
+    return "War"
   }
 }
 
+// Event Listeners
 
+newDeckBtn.addEventListener("click", handleClick)
 
 // Draw cards
 
@@ -51,15 +55,24 @@ drawCardBtn.addEventListener("click", () => {
   fetch(`https://apis.scrimba.com/deckofcards/api/deck/${deckId}/draw/?count=2`)
     .then(res => res.json())
     .then(data => {
+
       let cardOne = data.cards[0]
       let cardTwo = data.cards[1]
+      let remaining = data.remaining
+
+      // Create card images
       cardsContainer.children[0].innerHTML = `
                 <img src=${cardOne.image} class="card" />
             `
       cardsContainer.children[1].innerHTML = `
                 <img src=${cardTwo.image} class="card" />
             `
-      determineCardWinner(cardOne.value, cardTwo.value);
+      // Determine winner
+      const winnerText = determineCardWinner(cardOne.value, cardTwo.value);
+      ;
+      header.innerText = winnerText;
+      // Update deckInfo
+      remainingPlaceholder.innerText = remaining;
 
     })
 
