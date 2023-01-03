@@ -4,6 +4,7 @@ const newDeckBtn = document.getElementById("new-deck")
 const drawCardBtn = document.getElementById("draw-cards")
 const header = document.getElementById("header")
 const remainingPlaceholder = document.getElementById("remaining")
+const alert = document.getElementsByClassName("alert");
 
 // Functions
 
@@ -12,7 +13,9 @@ function handleClick() {
     .then(res => res.json())
     .then(data => {
       deckId = data.deck_id
-      remainingPlaceholder.innerText =  "52";
+      remainingPlaceholder.innerText = "52";
+      drawCardBtn.disabled = false;
+
     })
 }
 
@@ -47,6 +50,8 @@ const determineCardWinner = (card1, card2) => {
 
 // Event Listeners
 
+// Create new deck
+
 newDeckBtn.addEventListener("click", handleClick)
 
 // Draw cards
@@ -74,8 +79,14 @@ drawCardBtn.addEventListener("click", () => {
       // Update deckInfo
       remainingPlaceholder.innerText = remaining;
 
+      // Disable draw button if no cards left
+      if (remaining === 0) {
+        drawCardBtn.disabled = true
+        alert[0].style.display = "block"
+        setTimeout(() => {
+          alert[0].style.display = "none"
+        }, 3000)
+      }
     })
-
-
 })
 

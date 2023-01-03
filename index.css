@@ -1,9 +1,10 @@
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   background-color: #006e11;
   background-image: url("bg.png");
-  font-family: 'Quantico', sans-serif;
+  font-family: "Quantico", sans-serif;
 }
 
 body {
@@ -29,9 +30,7 @@ button.deck {
   width: 100px;
   height: 100px;
   margin: 1em;
-
 }
-
 
 button.draw {
   font-size: 1.2em;
@@ -42,9 +41,14 @@ button:hover {
   background-color: #f9b500;
 }
 
+button:disabled {
+  cursor: not-allowed;
+}
+
 div.card-slot {
   height: 200px;
-  width : calc(200px * 5 / 7);
+  width: calc(200px * 5 / 7);
+  margin-bottom: 1em;
 }
 
 div.card-slot:nth-of-type(1) {
@@ -63,15 +67,29 @@ img.card {
   align-items: center;
 }
 
-
 .deck-remaining {
   width: fit-content;
   padding: 1em;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
-.deck-remaining:hover{
+.deck-remaining:hover {
   scale: 1.1;
+}
+
+.alert {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  width: fit-content;
+  display: none;
 }
 
 @media only screen and (max-width: 768px) {
@@ -81,7 +99,6 @@ img.card {
   }
   div.card-slot {
     height: 100px;
-    width : calc(100px * 5 / 7);
-    margin-bottom: 1em;
+    width: calc(100px * 5 / 7);
   }
 }
