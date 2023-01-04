@@ -16,3 +16,7 @@ Interested it in playing! Try this game out!
 
 ## Screenshots
 ![](https://github.com/Juliaxtran/GameOfWar/blob/master/chrome-capture-2023-0-3.gif?raw=true)
+
+
+Deployed site at 
+[Game of War](https://relaxed-toffee-281da4.netlify.app/)
